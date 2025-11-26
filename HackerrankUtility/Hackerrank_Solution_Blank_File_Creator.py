@@ -13,7 +13,7 @@ import sys
 
 extension = ".py"
 domain = "Python"
-author = "Ahmedur Rahman Shovon"
+author = "Sohayel Mahmud"
 created_date = datetime.datetime.today().strftime("%d %B %Y")
 info_file_name = "python_info.txt"
 
@@ -43,7 +43,7 @@ for line in info_file_lines:
     line = line.strip()
     if line == "":
         continue
-    elif line[0] == "[":
+    elif line.startswith("["):
         problem_list = line
     else:
         subdomain_name = line
@@ -57,7 +57,7 @@ for line in info_file_lines:
         for title in title_ar:
             file_header_str = write_file_header(title[1:-1], subdomain_name)
             title_valid = valid_name(title)
-            f = open(folder_name + "\\" + title_valid + extension, "w")
+            f = open(os.path.join(folder_name, title_valid + extension), "w")
             f.write(file_header_str)
             f.close()
 
